@@ -55,7 +55,7 @@ function register(){
 
     if(isValid(newUser))
     {
-        console.log(newUser);
+        saveUser(newUser); //function call for storeManager
         $("input").val("");
     }
     

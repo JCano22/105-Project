@@ -24,20 +24,35 @@ function isValid(aUser) {
     if(aUser.email === ""){
         valid = false;
         $("#txtEmail").addClass("error");
+        displayNotification("Please fill out the required field(s)", "error")
     }
     if(aUser.password === ""){
         valid = false;
         $("#txtPassWord").addClass("error");
+        displayNotification("Please fill out the required field(s)", "error")
     }
     if(aUser.firstName ===""){
         valid = false;
         $("#txtFirstName").addClass("error");
+        displayNotification("Please fill out the required field(s)", "error")
     }
     if(aUser.lastName ===""){
         valid = false;
         $("#txtLastName").addClass("error");
+        displayNotification("Please fill out the required field(s)", "error")
     }
     return valid;
+}
+
+function displayNotification(msg, notificationType){
+    let DIV = $("#notifications");
+    DIV.removeClass("hide error success");
+    DIV.addClass(notificationType).text(msg);
+    
+}
+function hideNotification(){
+    let DIV = $("#notifications");
+    DIV.addClass("hide");
 }
 
 function register(){
@@ -55,6 +70,12 @@ function register(){
 
     if(isValid(newUser))
     {
+        displayNotification("Succcessful registration", "success");
+
+        setTimeout(function(){
+            hideNotification();
+        }, 2000);
+
         saveUser(newUser); //function call for storeManager
         $("input").val("");
     }

@@ -81,6 +81,11 @@ function register(){
     }
     
 }
+document.addEventListener('keydown', function(e){
+    if(e.key === 'Enter'){
+        register();
+    }
+})
     
 function init(){
     console.log("init");
